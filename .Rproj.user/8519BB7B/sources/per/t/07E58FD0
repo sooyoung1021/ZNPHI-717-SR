@@ -1,0 +1,26 @@
+{
+    "id": "07E58FD0",
+    "path": "~/Work/EIT/Zambia CS/717 Zambia/717 automated synthesis report/scripts/0_INSTALL PACKAGES.R",
+    "project_path": "scripts/0_INSTALL PACKAGES.R",
+    "type": "r_source",
+    "hash": "649878495",
+    "contents": "",
+    "dirty": false,
+    "created": 1725282101512.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "17,0",
+        "scrollLine": "15"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1725282177,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1725282177363,
+    "read_only": false,
+    "read_only_alternatives": []
+}

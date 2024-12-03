@@ -1,0 +1,143 @@
+---
+title: "Zambia 7-1-7 Synthesis Report"
+output: 
+  word_document:
+    reference_docx: style_template.docx
+    
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "results") })
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, include=T, warning=F, message = F)
+
+# Source functions
+source(here::here("scripts", "0_functions.R"))
+
+
+# Source the analytics script
+source(here::here("scripts", "1_key summary.R"))
+source(here::here("scripts", "2_overview.R"))
+source(here::here("scripts", "3_others.R"))
+source(here::here("scripts", "4_annexes.R"))
+
+```
+
+## `r format(Sys.Date(), "%Y/%m/%d")`
+## Events detected between `r format(start_date, "%b %Y")` - `r format(end_date, "%b %Y")`
+
+### Key messages and insights
+
+
+Zambia adopted the 7-1-7 performance improvement framework in 2023. This framework includes three timeliness metrics with specific targets to assess and improve real-world performance of early detection and response systems:
+
+* 7 days to __detect__ a suspected public health threat
+* 1 day to __notify__ a public health authority responsible for action
+* 7 days to __complete early response__ actions.
+
+This is the `r toOrdinal(report_n)` edition of the 7-1-7 synthesis report aimed at providing feedback to stakeholders on the outbreak management performance of the health system, bottlenecks identified, remedical actions completed, and recommendations that can inform prioritization of activities for the next cycle of annual operational planning.
+
+In this reporting period, 7-1-7 performance was evaluated for `r n_events` events, with all of these events presented at __national public health security meetings__. Among these events, `r p_met_detect` % (`r n_met_detect`/`r n_events`) met the 7-day detection target, `r p_met_notify` % (`r n_met_notify`/`r n_events`) met the 1-day notification target, `r p_met_response` % (`r n_met_response`/`r n_events`) met the 7-day response target, and `r p_met_all` % (`r n_met_all`/`r n_events`) met the full 7-1-7 target.
+
+Most frequently occuring bottleneck categories include:
+
+* `r bottleneck_1`
+* `r bottleneck_2`
+* `r bottleneck_3`
+
+This report also shows that `r n_actions_completed` of `r n_actions` (`r p_actions_completed`%) remedial actions proposed from `r n_events` during national public health security meetings were completed.
+
+### Overview of 7-1-7 performance
+
+```{r overview, fig.width = 12, fig.height = 3}
+gridExtra::grid.arrange(
+  grobs = overview_list,
+  widths = c(1.5, 2),
+  heights = c(0.25, 1),
+  layout_matrix = rbind(c(1, 2),
+                        c(3, 4))
+)
+
+```
+
+
+```{r overview2, fig.width = 12, fig.height = 2}
+gridExtra::grid.arrange(
+  rasterGrob(readPNG(here::here('results', 'tab_overall.png'), native=T)),
+  nrow = 1,
+  top = title_overall
+)
+```
+
+```{r overview3, fig.width = 12, fig.height = 3.5}
+gridExtra::grid.arrange(
+  rasterGrob(readPNG(here::here('results', 'tab_response.png'), native=T)),
+  nrow = 1,
+  top = title_response
+)
+```
+
+```{r overview4, fig.width = 12}
+gridExtra::grid.arrange(
+  rasterGrob(readPNG(here::here('results', 'tab_717.png'), native=T)),
+  nrow = 1,
+  top = title_717
+)
+```
+
+\newpage
+
+### Bottlenecks
+
+Bottlenecks were identified from all `r n_events` events, across the detection, notification, and response metrics. The identified bottlenecks were synthesized, further categorized, and aligned to relevant technical areas of the National Action Plan for Health Security (NAPHS). The table below highlights the number of most common bottlenecks by categories, along with corresponding NAPHS technical areas and recommendations. 
+
+```{r bottlenecks}
+kable(cbind(bn_tab_wide, reco = NA_character_),
+      col.names = c("NAPHS area", "Bottleneck category", "# of identified bottlenecks", "Recommendations"))
+
+```
+\newpage
+
+### Actions to improve future 7-1-7 performance
+
+Of the `r n_events` events presented at public health security meetings, a total of `r n_actions_completed` remedial actions were completed (see Annex 2). An additional `r n_actions_ongoing` are in progress and `r n_actions_proposed` actions were proposed for consideration in the NAPHS.
+
+
+
+### Enablers of 7-1-7 performance
+
+```{r enablers}
+tab_enabler %>% kable()
+
+```
+
+\newpage
+
+### Annex 1. Detailed performance for all events
+
+```{r annex1, fig.width = 12}
+knitr::include_graphics(here::here("results", "tab_annex1.png"))
+```
+
+\newpage
+
+### Annex 2. Remedial actions completed in this reporting period
+
+```{r annex2}
+comp_act %>% kable(align = "l", 
+                   col.names = c("", "Action", "Bottleneck addressed"))
+```
+                   
+\newpage
+
+### Annex 3. Bottlenecks by 7-1-7 interval
+
+```{r annex3_1, fig.width = 12, fig.height = 8}
+p_bn_by_cat
+```
+
+#### Bottlenecks by health system level
+
+```{r annex3_2, fig.width = 6}
+p_annex_3_2
+```
