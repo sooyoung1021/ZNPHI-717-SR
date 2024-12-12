@@ -59,7 +59,7 @@ overview_list <-
                   box_gp = gpar(col = "black",
                                 fill = "light grey",
                                 lty = 1),
-                  padding = unit(c(0.4,0.5, 0.4, 0.55), "npc"),
+                  padding = unit(c(0.02,0.45, 0.02, 0.45), "npc"),
                   margin = unit(c(0,0,20, 0), "pt")
                   
     ),

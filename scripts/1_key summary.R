@@ -24,7 +24,7 @@ dat <- rio::import(here::here("data", file_name),
                   col_names = cols) %>% filter(!is.na(event))
 
 bn <- rio::import(here::here("data", file_name),
-                  which = "Optional | Analyze BNs ")
+                  which = "4. Categorize bottlenecks")
 
 actions <- rio::import(here::here("data", file_name),
                        which = "3. Track remedial actions")

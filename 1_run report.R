@@ -6,12 +6,12 @@
 
 ## 1. Enter the data conslidation sheet name. 
 ## (This file should be saved in the "data" folder)
-file_name <- "717 data file.xlsx"
+file_name <- "Zambia 717 data consolidation spreadsheet  Oct 2024.xlsx"
 
 ## 2. Specify the dates in the format of YYYY-MM-DD
 ## (don't run these lines if you want to include all events in the data sheet)
 start_date <- as.Date("2024-01-01")
-end_date <- as.Date("2024-1-31")
+end_date <- as.Date("2024-12-01")
 
 ## 3. Specify the report number
 report_n <- 2

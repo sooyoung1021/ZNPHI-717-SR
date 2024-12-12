@@ -32,5 +32,5 @@ devtools::install_github('Mikata-Project/ggthemr')
 pacman::p_load(ggplot2, rio, here, dplyr, tidyverse, lubridate, 
                magrittr, rmarkdown, knitr, kableExtra, toOrdinal, gridExtra, 
                ggpubr, gridtext, grid, patchwork, png, webshot2, ggforce,
-               stringr)
+               stringr, forcats)
 
