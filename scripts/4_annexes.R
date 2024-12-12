@@ -40,7 +40,7 @@ comp_act <- cbind(1:nrow(comp_act), comp_act)
 
 p_bn_by_cat <- bn %>% filter(!is.na(bn_cat)) %>% 
   mutate(interval2 = paste0(interval, " bottlenecks")) %>%
-  ggplot(aes(x= forcats::fct_infreq(bn_cat))) + 
+  ggplot(aes(x= forcats::fct_rev(forcats::fct_infreq(bn_cat)))) + 
   geom_bar(fill = "#0437F2") + 
   coord_flip() +
   theme_minimal() +

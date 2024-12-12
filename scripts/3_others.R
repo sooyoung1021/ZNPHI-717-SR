@@ -12,4 +12,11 @@ tab_enabler <- c(
   dat$response_enabler %>% unique()
 ) %>% as.data.frame()
 
+colnames(tab_enabler) <- "enabler"
+
+tab_enabler %<>% mutate(
+  enabler = str_remove_all(gsub("\\r\\n", "|", enabler), "•")
+)
+
+tab_enabler %<>% .[!duplicated(tab_enabler),]
 tab_enabler %>% kable(col.names = c("<b>Common enablers</b>"))
